@@ -6,4 +6,10 @@ namespace ExpFastEnpoints.ExpFastEndpoints.Core.Database;
 public class PostgresDatabase(DbContextOptions<PostgresDatabase> options) : DbContext(options)
 {
     public DbSet<SmsInactivity> SmsInactivity { get; set; }
+    
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.HasDefaultSchema("public");
+        base.OnModelCreating(builder);
+    }
 }
