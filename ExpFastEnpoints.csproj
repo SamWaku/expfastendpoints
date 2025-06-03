@@ -31,6 +31,9 @@
 
     <ItemGroup>
       <Folder Include="ExpFastEndpoints.Core\Entities\" />
+      <Folder Include="ExpFastEndpoints.Core\Modules\InvestmentManagement\Commands\" />
+      <Folder Include="ExpFastEndpoints.Core\Modules\InvestmentManagement\Endpoints\" />
+      <Folder Include="ExpFastEndpoints.Core\Modules\InvestmentManagement\Entities\" />
     </ItemGroup>
 
 </Project>
