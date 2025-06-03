@@ -1,10 +1,15 @@
-﻿namespace ExpFastEnpoints.ExpFastEndpoints.Core.Models;
+﻿using ExpFastEnpoints.ExpFastEndpoints.Core.Common;
+
+namespace ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 
 public class SmsInactivity
 {
-    
+    public string? Id { get; set; }
+    public string? Text { get; set; }
+    public DateTime CreatedAt { get; set; }
 }
 
+[PostgresEnum]
 public enum InactivityBand
 {
     SevenDays,
