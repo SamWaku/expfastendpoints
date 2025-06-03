@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddFastEndpoints();
 builder.Services.SwaggerDocument();
 builder.Services.AddCors();
+builder.Services.AddDbContext(builder.Configuration);
 
 
 var app = builder.Build();
