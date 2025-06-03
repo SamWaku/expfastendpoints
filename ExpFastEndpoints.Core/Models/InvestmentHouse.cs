@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 
@@ -22,22 +23,24 @@ public class InvestmentHouse : BaseEntity
     public Boolean? TaxClearanceCertificate {get;set;}
     public Boolean? TradingLicense {get;set;}
     public Boolean? Financials {get;set;}
-}
-
-public class ContactPerson
-{
-    public string? Name { get; set; }
-    public string? Phone { get; set; }
-    [EmailAddress]
-    public string? Email { get; set; }
-    public string? Position { get; set; }
-}
-
-public class Director
-{
-    public string? Name { get; set; }
-    public string? Phone { get; set; }
-    [EmailAddress]
-    public string? Email { get; set; }
-    public string? Position { get; set; }
+    
+    [Owned]
+    public class ContactPerson
+    {
+        public string? Name { get; set; }
+        public string? Phone { get; set; }
+        [EmailAddress]
+        public string? Email { get; set; }
+        public string? Position { get; set; }
+    }
+    
+    [Owned]
+    public class Director
+    {
+        public string? Name { get; set; }
+        public string? Phone { get; set; }
+        [EmailAddress]
+        public string? Email { get; set; }
+        public string? Position { get; set; }
+    }
 }
