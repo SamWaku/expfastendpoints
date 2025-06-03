@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExpFastEnpoints.ExpFastEndpoints.Core.Database;
 
-public class PostgresDatabase(DbContextOptions<PostgresDatabase> options)
+public class PostgresDatabase(DbContextOptions<PostgresDatabase> options) : DbContext(options)
 {
-    DbSet<SmsInactivity> SmsInactivity { get; set; }
+    public DbSet<SmsInactivity> SmsInactivity { get; set; }
 }

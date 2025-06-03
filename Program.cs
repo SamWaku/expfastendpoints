@@ -1,5 +1,6 @@
 using FastEndpoints;
 using FastEndpoints.Swagger;
+using ExpFastEnpoints.ExpFastEndpoints.Core.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddFastEndpoints();
