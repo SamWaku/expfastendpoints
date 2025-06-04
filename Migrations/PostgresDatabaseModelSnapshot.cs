@@ -25,9 +25,12 @@ namespace ExpFastEnpoints.Migrations
 
             modelBuilder.Entity("ExpFastEnpoints.ExpFastEndpoints.Core.Models.FixedTermDeposit", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
                         .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<double>("Amount")
                         .HasColumnType("double precision")
@@ -45,8 +48,8 @@ namespace ExpFastEnpoints.Migrations
                         .HasColumnType("double precision")
                         .HasColumnName("interest_rate");
 
-                    b.Property<string>("InvestmentHouseId")
-                        .HasColumnType("text")
+                    b.Property<int>("InvestmentHouseId")
+                        .HasColumnType("integer")
                         .HasColumnName("investment_house_id");
 
                     b.Property<double>("MaturityAmount")
@@ -80,9 +83,12 @@ namespace ExpFastEnpoints.Migrations
 
             modelBuilder.Entity("ExpFastEnpoints.ExpFastEndpoints.Core.Models.InvestmentHouse", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
                         .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<bool?>("CertificateOfIncorporation")
                         .HasColumnType("boolean")
@@ -187,6 +193,8 @@ namespace ExpFastEnpoints.Migrations
                     b.HasOne("ExpFastEnpoints.ExpFastEndpoints.Core.Models.InvestmentHouse", "InvestmentHouse")
                         .WithMany()
                         .HasForeignKey("InvestmentHouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("fk_fixed_term_deposit_investment_house_investment_house_id");
 
                     b.Navigation("InvestmentHouse");
@@ -196,8 +204,8 @@ namespace ExpFastEnpoints.Migrations
                 {
                     b.OwnsMany("ExpFastEnpoints.ExpFastEndpoints.Core.Models.InvestmentHouse+ContactPerson", "ContactPersons", b1 =>
                         {
-                            b1.Property<string>("InvestmentHouseId")
-                                .HasColumnType("text")
+                            b1.Property<int>("InvestmentHouseId")
+                                .HasColumnType("integer")
                                 .HasColumnName("investment_house_id");
 
                             b1.Property<int>("Id")
@@ -235,8 +243,8 @@ namespace ExpFastEnpoints.Migrations
 
                     b.OwnsMany("ExpFastEnpoints.ExpFastEndpoints.Core.Models.InvestmentHouse+Director", "Directors", b1 =>
                         {
-                            b1.Property<string>("InvestmentHouseId")
-                                .HasColumnType("text")
+                            b1.Property<int>("InvestmentHouseId")
+                                .HasColumnType("integer")
                                 .HasColumnName("investment_house_id");
 
                             b1.Property<int>("Id")

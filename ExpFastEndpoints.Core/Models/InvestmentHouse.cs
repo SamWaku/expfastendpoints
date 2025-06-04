@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ExpFastEnpoints.ExpFastEndpoints.Core.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExpFastEnpoints.ExpFastEndpoints.Core.Models;

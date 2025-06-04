@@ -1,4 +1,5 @@
-﻿using ExpFastEnpoints.ExpFastEndpoints.Core.Models;
+﻿using ExpFastEnpoints.ExpFastEndpoints.Core.Common;
+using ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 
 namespace ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 

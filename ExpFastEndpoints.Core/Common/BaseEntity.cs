@@ -1,5 +1,7 @@
-﻿public class BaseEntity
+﻿namespace ExpFastEnpoints.ExpFastEndpoints.Core.Common;
+
+public class BaseEntity
 {
-    public string? Id { get; set; }
+    public int Id { get; set; } 
     public DateTime DateCreated { get; set; }
 }

@@ -4,7 +4,12 @@ using FastEndpoints;
 
 namespace ExpFastEnpoints.ExpFastEndpoints.Core.Endpoints;
 
-public class CreateInvestmentHouseEndpoint(PostgresDatabase postgresDb) : Endpoint<InvestmentHouseRequest>
+public class InvestmentHouseResponse
+{
+    public string Message { get; set; }
+}
+
+public class CreateInvestmentHouseEndpoint(PostgresDatabase postgresDb) : Endpoint<InvestmentHouseRequest, InvestmentHouseResponse>
 {
     public override void Configure()
     {
@@ -39,5 +44,9 @@ public class CreateInvestmentHouseEndpoint(PostgresDatabase postgresDb) : Endpoi
 
         database.Set<InvestmentHouse>().Add(newInvestmentHouse);
         await database.SaveChangesAsync(cancellationToken: ct);
+        await SendOkAsync(new InvestmentHouseResponse
+        {
+            Message = "Investment House Created",
+        });
     }
 }
