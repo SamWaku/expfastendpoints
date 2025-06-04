@@ -3,7 +3,7 @@ using ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 
 namespace ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 
-public partial class FixedTermDeposit : BaseEntity
+public class FixedTermDeposit : BaseEntity
 {
     public double Amount { get; set; }
     public int InvestmentHouseId { get; set; }
@@ -22,5 +22,5 @@ public partial class FixedTermDeposit : BaseEntity
 
     public DateTime UpdatedAt { get; set; }
 
-    // public virtual InvestmentHouse InvestmentHouse { get; set; } = null!;
+    public virtual InvestmentHouse InvestmentHouse { get; set; } = null!;
 }

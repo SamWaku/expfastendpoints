@@ -22,5 +22,5 @@ public class FixedTermDepositRequest
 
     public DateTime UpdatedAt { get; set; }
 
-    // public virtual InvestmentHouse InvestmentHouse { get; set; } = null!;
+    public virtual InvestmentHouse InvestmentHouse { get; set; } = null!;
 }
