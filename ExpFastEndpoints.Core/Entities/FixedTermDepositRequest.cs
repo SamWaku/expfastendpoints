@@ -2,8 +2,6 @@
 
 public class FixedTermDepositRequest
 {
-    public int Id { get; set; }
-
     public int InvestmentHouseId { get; set; }
 
     public double Amount { get; set; }

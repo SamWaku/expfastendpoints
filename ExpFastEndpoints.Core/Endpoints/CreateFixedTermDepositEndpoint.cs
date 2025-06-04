@@ -18,6 +18,7 @@ public class CreateFixedTermDepositEndpoint(PostgresDatabase postgresDb) : Endpo
         var database = postgresDb;
         var newFixedTermDeposit = new FixedTermDeposit
         {
+            InvestmentHouseId = req.InvestmentHouseId,
             Amount = req.Amount,
             InterestRate = req.InterestRate,
             Tenure = req.Tenure,
