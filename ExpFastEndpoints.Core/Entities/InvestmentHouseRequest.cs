@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 public class InvestmentHouseRequest 
@@ -15,14 +16,15 @@ public class InvestmentHouseRequest
     public string? MobileNumber {get;set;}
     [EmailAddress]
     public string? EmailAddress {get;set;}
-    protected List<ContactPerson> ContactPersons { get; set; } = new();
-    protected List<Director> Directors { get; set; } = new();
+    public List<InvestmentHouse.ContactPerson> ContactPersons { get; set; } = new();
+    public List<InvestmentHouse.Director> Directors { get; set; } = new();
     public Boolean? CertificateOfIncorporation {get;set;}
     public Boolean? TaxClearanceCertificate {get;set;}
     public Boolean? TradingLicense {get;set;}
     public Boolean? Financials {get;set;}
     
-    protected class ContactPerson
+    [Owned]
+    public class ContactPerson
     {
         public string? Name { get; set; }
         public string? Phone { get; set; }
@@ -30,8 +32,8 @@ public class InvestmentHouseRequest
         public string? Email { get; set; }
         public string? Position { get; set; }
     }
-    
-    protected class Director
+    [Owned]
+    public class Director
     {
         public string? Name { get; set; }
         public string? Phone { get; set; }
