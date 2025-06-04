@@ -18,7 +18,6 @@ public class CreateFixedTermDepositEndpoint(PostgresDatabase postgresDb) : Endpo
         var database = postgresDb;
         var newFixedTermDeposit = new FixedTermDeposit
         {
-            InvestmentHouseId = req.InvestmentHouseId,
             Amount = req.Amount,
             InterestRate = req.InterestRate,
             Tenure = req.Tenure,
@@ -28,7 +27,7 @@ public class CreateFixedTermDepositEndpoint(PostgresDatabase postgresDb) : Endpo
             MaturityAmount = req.MaturityAmount,
         };
 
-        database.Add(newFixedTermDeposit);
+        database.Set<FixedTermDeposit>().Add(newFixedTermDeposit);
         await database.SaveChangesAsync(ct);
     }
 }
