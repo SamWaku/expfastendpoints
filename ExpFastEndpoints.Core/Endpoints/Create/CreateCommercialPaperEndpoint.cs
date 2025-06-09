@@ -29,8 +29,10 @@ public class CreateCommercialPaperEndpoint(PostgresDatabase postgresDatabase) : 
             Tenure = req.Tenure,
             StartDate = req.StartDate,
             MaturityDate = req.MaturityDate
-        }
+        };
 
-        await SendOkAsync(cancellation: ct);
+        database.Set<CommercialPaper>().Add(newCommercialPaper);
+        await database.SaveChangesAsync(cancellationToken: ct);
+        await SendOkAsync( new CreateCommercialPaperResponse{ Message = "Commercial paper created"},cancellation: ct);
     }
 }
