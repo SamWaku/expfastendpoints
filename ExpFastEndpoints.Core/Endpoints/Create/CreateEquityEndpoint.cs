@@ -20,6 +20,7 @@ public class CreateEquityEndpoint(PostgresDatabase postgresDatabase) : Endpoint<
 
     public override async Task HandleAsync(CreateEquityRequest req, CancellationToken ct)
     {
+        var database = postgresDatabase;
         var newEquity = new Equity
         {
             DateCreated = default,
@@ -28,6 +29,13 @@ public class CreateEquityEndpoint(PostgresDatabase postgresDatabase) : Endpoint<
             Quantity = req.Quantity,
             SharePrice = req.SharePrice
         };
-        await SendOkAsync(cancellation: ct);
+
+        database.Set<Equity>().Add(newEquity);
+        await database.SaveChangesAsync(cancellationToken: ct);
+        
+        await SendOkAsync(new CreateEquityResponse
+        {
+            Message = "Equity created",
+        },cancellation: ct);
     }
 }
