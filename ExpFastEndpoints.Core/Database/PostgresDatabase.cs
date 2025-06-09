@@ -8,6 +8,7 @@ public class PostgresDatabase(DbContextOptions<PostgresDatabase> options) : DbCo
     public DbSet<SmsInactivity> SmsInactivity { get; set; }
     public DbSet<InvestmentHouse> InvestmentHouse { get; set; }
     public DbSet<FixedTermDeposit> FixedTermDeposit { get; set; }
+    public DbSet<Equity> Equity { get; set; }
     
     protected override void OnModelCreating(ModelBuilder builder)
     {

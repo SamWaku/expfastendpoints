@@ -10,6 +10,7 @@ public class Equity : BaseEntity
     public double SharePrice { get; set; }
 }
 
+[PostgresEnum]
 public enum OrderType
 {
     Sell,
