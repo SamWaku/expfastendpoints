@@ -1,6 +1,8 @@
-﻿namespace ExpFastEnpoints.ExpFastEndpoints.Core.Entities.Equity;
+﻿using ExpFastEnpoints.ExpFastEndpoints.Core.Common.Pagination;
 
-public class EquitiesRequest
+namespace ExpFastEnpoints.ExpFastEndpoints.Core.Entities.Equity;
+
+public class EquitiesRequest : PaginationFilter
 {
     public int? Id { get; set; }
     public string? SearchQuery { get; set; }

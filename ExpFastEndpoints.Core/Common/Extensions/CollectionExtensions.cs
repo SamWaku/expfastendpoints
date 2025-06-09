@@ -28,4 +28,14 @@ public static class CollectionExtensions
             Data = data.ToList() 
         };
     }
+    
+    public static IQueryable<T> OrderAndPaginate<T>(this IQueryable<T> data, PaginationFilter filter)
+        where T : BaseEntity
+    {
+        var pagedResponse = data
+            .OrderByDescending(x => x.Id)
+            .Skip((filter.PageNumber - 1) * filter.PageSize)
+            .Take(filter.PageSize);
+        return pagedResponse;
+    }
 }
