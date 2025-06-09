@@ -1,6 +1,19 @@
-﻿namespace ExpFastEnpoints.ExpFastEndpoints.Core.Endpoints;
+﻿using ExpFastEnpoints.ExpFastEndpoints.Core.Database;
+using ExpFastEnpoints.ExpFastEndpoints.Core.Entities.CommercialPaper;
+using FastEndpoints;
 
-public class CreateCommercialPaperEndpoint 
+namespace ExpFastEnpoints.ExpFastEndpoints.Core.Endpoints;
+
+public class CreateCommercialPaperEndpoint(PostgresDatabase postgresDatabase) : Endpoint<CreateCommercialPaperRequest, CreateCommercialPaperResponse>
 {
+    public override void Configure()
+    {
+        Post("exp/create-commercial-paper");
+        Summary(s =>
+        {
+            s.Summary = "Create commercial paper";
+        });
+        AllowAnonymous();
+    }
     
 }
