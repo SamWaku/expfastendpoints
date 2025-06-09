@@ -40,8 +40,15 @@ public class GetEquitiesEndpoint(PostgresDatabase postgresDatabase) : Endpoint<E
             OrderType = x.OrderType,
             Company = x.Company,
             Quantity = x.Quantity,
-            SharePrice = x.SharePrice
+            SharePrice = x.SharePrice,
+            TotalConsideration = TotalConsideration(x.Quantity, x.SharePrice)
         }).ToPagedResponse(total, req);
         await SendOkAsync(response, cancellation: ct);
+    }
+    
+    private static double TotalConsideration(double quantity, double sharePrice)
+    {
+        var totalConsideration = quantity * sharePrice;
+        return totalConsideration;
     }
 }

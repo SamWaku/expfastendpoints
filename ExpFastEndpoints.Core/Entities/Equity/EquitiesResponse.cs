@@ -9,4 +9,5 @@ public class EquitiesResponse: BaseEntity
     public string? Company { get; set; }
     public double Quantity { get; set; }
     public double SharePrice { get; set; }
+    public double TotalConsideration { get; set; }
 }

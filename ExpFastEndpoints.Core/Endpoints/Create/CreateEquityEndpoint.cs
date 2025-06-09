@@ -23,7 +23,7 @@ public class CreateEquityEndpoint(PostgresDatabase postgresDatabase) : Endpoint<
         var database = postgresDatabase;
         var newEquity = new Equity
         {
-            DateCreated = default,
+            DateCreated = DateTime.UtcNow,
             OrderType = req.OrderType,
             Company = req.Company,
             Quantity = req.Quantity,
