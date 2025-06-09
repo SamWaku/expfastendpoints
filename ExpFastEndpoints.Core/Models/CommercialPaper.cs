@@ -4,7 +4,7 @@ namespace ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 
 public class CommercialPaper : BaseEntity
 {
-    public required string CompanyName { get; set; }
+    public string CompanyName { get; set; }
     public double InvestedAmount { get; set; }
     public double InterestRate { get; set; }
     public int Tenure { get; set; }
