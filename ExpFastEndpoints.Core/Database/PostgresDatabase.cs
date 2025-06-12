@@ -11,6 +11,8 @@ public class PostgresDatabase(DbContextOptions<PostgresDatabase> options) : DbCo
     public DbSet<Equity> Equity { get; set; }
     public DbSet<CommercialPaper> CommercialPaper { get; set; }
     
+    public DbSet<User> User { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.HasDefaultSchema("public");
