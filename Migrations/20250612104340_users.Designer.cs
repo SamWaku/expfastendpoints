@@ -3,6 +3,7 @@ using System;
 using ExpFastEnpoints.ExpFastEndpoints.Core.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExpFastEnpoints.Migrations
 {
     [DbContext(typeof(PostgresDatabase))]
-    partial class PostgresDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20250612104340_users")]
+    partial class users
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -281,17 +284,14 @@ namespace ExpFastEnpoints.Migrations
                         .HasColumnName("date_created");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("email");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("password");
 
