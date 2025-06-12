@@ -24,7 +24,8 @@ public class Signup(PostgresDatabase database) : Endpoint<RegisterRequest, Regis
             Name = req.Name,
             Email = req.Email,
             Password = req.Password,
-            DateCreated = DateTime.UtcNow
+            DateCreated = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
         };
         database.User.Add(newUser);
         await database.SaveChangesAsync(cancellationToken: ct);
