@@ -10,7 +10,7 @@ builder.Services.AddFastEndpoints();
 builder.Services.SwaggerDocument();
 builder.Services.AddCors();
 builder.Services.AddDbContext(builder.Configuration);
-builder.Services.AddAuthenticationJwtBearer(s => s.SigningKey = "SomeKey");
+builder.Services.AddAuthenticationJwtBearer(s => s.SigningKey = builder.Configuration["JwtKey"]);
 builder.Services.AddAuthorization();
 
 

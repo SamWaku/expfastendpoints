@@ -2,7 +2,7 @@
 
 namespace ExpFastEnpoints.ExpFastEndpoints.Core.Entities.Auth;
 
-public class LoginRequest
+public class RegisterRequest
 {
     public string Name { get; set; }
     [EmailAddress]
