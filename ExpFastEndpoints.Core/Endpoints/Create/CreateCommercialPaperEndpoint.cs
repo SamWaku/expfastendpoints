@@ -18,8 +18,10 @@ public class CreateCommercialPaperEndpoint(PostgresDatabase postgresDatabase) : 
     }
 
     public override async Task HandleAsync(CreateCommercialPaperRequest req, CancellationToken ct)
-    {
+    { 
         var database = postgresDatabase;
+        var maturityDate = new DateTime().AddDays(req.Tenure);
+        
         var newCommercialPaper = new CommercialPaper
         {
             DateCreated = DateTime.UtcNow,
@@ -28,11 +30,13 @@ public class CreateCommercialPaperEndpoint(PostgresDatabase postgresDatabase) : 
             InterestRate = req.InterestRate,
             Tenure = req.Tenure,
             StartDate = req.StartDate,
-            MaturityDate = req.MaturityDate
+            MaturityDate = maturityDate
         };
 
         database.Set<CommercialPaper>().Add(newCommercialPaper);
         await database.SaveChangesAsync(cancellationToken: ct);
         await SendOkAsync( new CreateCommercialPaperResponse{ Message = "Commercial paper created"},cancellation: ct);
     }
+    
+    
 }

@@ -30,6 +30,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="ExpFastEndpoints.Core\Endpoints\Authentication\" />
       <Folder Include="ExpFastEndpoints.Core\Modules\InvestmentManagement\Commands\" />
       <Folder Include="ExpFastEndpoints.Core\Modules\InvestmentManagement\Endpoints\" />
       <Folder Include="ExpFastEndpoints.Core\Modules\InvestmentManagement\Entities\" />
