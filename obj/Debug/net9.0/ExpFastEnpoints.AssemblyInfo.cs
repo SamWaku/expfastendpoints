@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExpFastEnpoints")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+afde153204343ee56b7da91e6bc7ec87f248a3c2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ddd563944802bbc1df760e9dd833b594ab8250b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExpFastEnpoints")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExpFastEnpoints")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

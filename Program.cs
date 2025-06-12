@@ -6,11 +6,13 @@ using ExpFastEnpoints.ExpFastEndpoints.Core.Common;
 using FastEndpoints.Security;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var jwtKey = builder.Configuration["JwtKey"];
 builder.Services.AddFastEndpoints();
 builder.Services.SwaggerDocument();
 builder.Services.AddCors();
 builder.Services.AddDbContext(builder.Configuration);
-builder.Services.AddAuthenticationJwtBearer(s => s.SigningKey = builder.Configuration["JwtKey"]);
+builder.Services.AddAuthenticationJwtBearer(s => s.SigningKey = jwtKey);
 builder.Services.AddAuthorization();
 
 
