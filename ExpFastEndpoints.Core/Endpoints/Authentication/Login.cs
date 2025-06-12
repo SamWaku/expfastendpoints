@@ -1,6 +1,9 @@
-﻿namespace ExpFastEnpoints.ExpFastEndpoints.Core.Endpoints.Authentication;
+﻿using FastEndpoints;
+using Microsoft.AspNetCore.Identity.Data;
 
-public class Login
+namespace ExpFastEnpoints.ExpFastEndpoints.Core.Endpoints.Authentication;
+
+public class Login : Endpoint<LoginRequest>
 {
     
 }
