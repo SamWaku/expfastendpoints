@@ -15,7 +15,7 @@ public class CreateEquityEndpoint(PostgresDatabase postgresDatabase) : Endpoint<
        {
            s.Summary = "Create Equity";
        });
-       AllowAnonymous();
+       // AllowAnonymous();
     }
 
     public override async Task HandleAsync(CreateEquityRequest req, CancellationToken ct)

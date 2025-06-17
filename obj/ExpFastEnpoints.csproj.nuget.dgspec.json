@@ -85,6 +85,10 @@
               "target": "Package",
               "version": "[9.0.5, )"
             },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
             "Npgsql": {
               "target": "Package",
               "version": "[9.0.3, )"

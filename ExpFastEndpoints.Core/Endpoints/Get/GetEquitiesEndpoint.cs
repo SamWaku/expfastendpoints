@@ -17,7 +17,7 @@ public class GetEquitiesEndpoint(PostgresDatabase postgresDatabase) : Endpoint<E
         {
             s.Summary = "Get Equities";
         });
-        AllowAnonymous();
+        // AllowAnonymous();
     }
 
     public override async Task HandleAsync(EquitiesRequest req, CancellationToken ct)

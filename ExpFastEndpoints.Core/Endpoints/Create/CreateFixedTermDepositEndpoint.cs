@@ -10,7 +10,7 @@ public class CreateFixedTermDepositEndpoint(PostgresDatabase postgresDb) : Endpo
     {
         Post("exp/create-fixed-term-deposit");
         Summary(s => s.Summary = "Create Fixed Term Deposit");
-        AllowAnonymous();
+        // AllowAnonymous();
     }
 
     public override async Task HandleAsync(FixedTermDepositRequest req, CancellationToken ct)

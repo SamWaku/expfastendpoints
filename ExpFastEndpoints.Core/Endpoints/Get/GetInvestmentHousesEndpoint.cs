@@ -18,7 +18,7 @@ public class GetInvestmentHousesEndpoint(PostgresDatabase postgresDb) : Endpoint
     {
         Get("exp/investment-houses");
         Summary(s => s.Summary = "Get investment houses");
-        AllowAnonymous();
+        // AllowAnonymous();
     }
 
     public override async Task HandleAsync(InvestmentHousesRequest req, CancellationToken ct)

@@ -26,6 +26,8 @@ public class Login(PostgresDatabase database, IConfiguration configuration) : En
     public override async Task HandleAsync(LoginRequest req, CancellationToken ct)
     {
         var matchPassword = await database.User.FirstOrDefaultAsync(x => x.Email == req.Email && x.Password == req.Password, cancellationToken: ct);
+        if (matchPassword is null)
+            ThrowError("Could not log you in", StatusCodes.Status401Unauthorized);
         var jwtToken = JwtBearer.CreateToken(t =>
         {
             t.SigningKey = configuration.GetConnectionString("JwtKey");
@@ -35,8 +37,6 @@ public class Login(PostgresDatabase database, IConfiguration configuration) : En
             t.User["UserId"] = matchPassword?.Id.ToString(); 
         });
 
-        if (matchPassword is null)
-            ThrowError("Could not log you in", StatusCodes.Status401Unauthorized);
             
         await SendOkAsync(new
         {

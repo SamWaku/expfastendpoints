@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore; 
+﻿using ExpFastEnpoints.ExpFastEndpoints.Core.Common;
+using Microsoft.EntityFrameworkCore; 
 using ExpFastEnpoints.ExpFastEndpoints.Core.Common.Extensions;
 using ExpFastEnpoints.ExpFastEndpoints.Core.Common.Pagination;
 using ExpFastEnpoints.ExpFastEndpoints.Core.Database;
+using ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 using FastEndpoints;
 
 public class FixedTermDepositsRequest : PaginationFilter
@@ -9,19 +11,20 @@ public class FixedTermDepositsRequest : PaginationFilter
     // public virtual InvestmentHouse InvestmentHouse { get; set; } = null!;
 }
 
-public class FixedTermDepositsEndpoint(PostgresDatabase postgresDb) : Endpoint<FixedTermDepositsRequest, PaginatedResponse<FixedTermDepositsResponse>>
+public class FixedTermDepositsEndpoint(IDatabaseService databaseService, PostgresDatabase postgresDb) : Endpoint<FixedTermDepositsRequest, PaginatedResponse<FixedTermDepositsResponse>>
 {
     public override void Configure()
     {
         Get("exp/fixed-term-deposits");
         Summary(s => s.Summary = "Get fixed-term-deposits");
-        AllowAnonymous();
+        // AllowAnonymous();
     }
 
     public override async Task HandleAsync(FixedTermDepositsRequest req, CancellationToken ct)
     {
-        var database = postgresDb.FixedTermDeposit;
-        var fixedTermDeposits = await database
+        var database = databaseService.SelectDatabase("PatumbaCentral");
+        var db = database.Set<FixedTermDeposit>();
+        var fixedTermDeposits = await db
             .OrderByDescending(x => x.Id)
             .Include(x => x.InvestmentHouse)
             .Skip((req.PageNumber - 1) * req.PageSize)

@@ -14,7 +14,7 @@ public class CreateCommercialPaperEndpoint(PostgresDatabase postgresDatabase) : 
         {
             s.Summary = "Create commercial paper";
         });
-        AllowAnonymous();
+        // AllowAnonymous();
     }
 
     public override async Task HandleAsync(CreateCommercialPaperRequest req, CancellationToken ct)

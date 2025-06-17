@@ -15,7 +15,7 @@ public class CreateInvestmentHouseEndpoint(PostgresDatabase postgresDb) : Endpoi
     {
         Post("exp/create-investment-house");
         Summary(s => s.Summary = "Create Investment House");
-        AllowAnonymous();
+        // AllowAnonymous();
     }
 
     public override async Task HandleAsync(InvestmentHouseRequest req, CancellationToken ct)

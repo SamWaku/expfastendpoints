@@ -11,7 +11,7 @@ public class GetUsersEndpoints : EndpointWithoutRequest
         {
             s.Summary = "Summary";
         });
-        AllowAnonymous();
+        // AllowAnonymous();
     }
 
     public override async Task HandleAsync(CancellationToken ct)

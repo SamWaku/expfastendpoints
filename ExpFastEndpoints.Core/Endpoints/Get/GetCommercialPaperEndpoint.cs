@@ -16,7 +16,7 @@ public class GetCommercialPaperEndpoint(PostgresDatabase postgresDatabase) : End
         {
             s.Summary = "Get Commercial Papers";
         });
-        AllowAnonymous();
+        // AllowAnonymous();
     }
 
     public override async Task HandleAsync(CommercialPaperRequest req, CancellationToken ct)

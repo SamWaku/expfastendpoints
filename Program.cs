@@ -13,10 +13,11 @@ builder.Services.SwaggerDocument();
 builder.Services.AddCors();
 builder.Services.AddDbContext(builder.Configuration);
 builder.Services.AddAuthenticationJwtBearer(s => s.SigningKey = jwtKey);
+builder.Services.AddScoped<IDatabaseService, DatabaseService>();
 builder.Services.AddAuthorization();
 
 
-var app = builder.Build();
+var app = builder.Build(); 
 
 app.UseFastEndpoints(c =>
 {

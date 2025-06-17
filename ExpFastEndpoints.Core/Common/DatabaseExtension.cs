@@ -9,6 +9,8 @@ public static class DatabaseExtension
     public static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
     {
         var databaseConnection = configuration.GetConnectionString("Postgres");
+        var patumbaCentralConnectionStrings = configuration.GetConnectionString("PatumbaCentral");
+        
         var dataSourceBuilder = new NpgsqlDataSourceBuilder(databaseConnection).EnableUnmappedTypes();
         dataSourceBuilder.EnableDynamicJson();
         dataSourceBuilder.RegisterEnumTypeConversion("public");
@@ -20,6 +22,13 @@ public static class DatabaseExtension
                     .EnableRetryOnFailure()
                     .MigrationsHistoryTable("__EFMigrationsHistory", "public"))
                 .UseSnakeCaseNamingConvention();;
+        });
+        
+        services.AddDbContext<PatumbaCentralDatabase>(options =>
+        {
+            if (patumbaCentralConnectionStrings != null)
+                options.UseMySQL(patumbaCentralConnectionStrings)
+                    .LogTo(Console.WriteLine, LogLevel.Information);
         });
     }
 }
