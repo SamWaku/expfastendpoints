@@ -16,10 +16,7 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("public")
-                .HasAnnotation("Npgsql:Enum:public.inactivity_band", "seven_days,fourteen_days,thirty_days,thirty_one_to_sixty_days,sixty_one_to_ninety_days,ninety_one_to_one_twenty_days,one_twenty_one_to_one_eighty_days,one_eighty_one_to_three_sixty_five_days")
-                .HasAnnotation("Npgsql:Enum:public.order_type", "sell,buy")
-                .HasAnnotation("ProductVersion", "9.0.5")
+                .HasAnnotation("ProductVersion", "9.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("ExpFastEnpoints.ExpFastEndpoints.Core.Models.FixedTermDeposit", b =>
@@ -62,7 +59,7 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
 
                     b.HasIndex("InvestmentHouseId");
 
-                    b.ToTable("fixed_term_deposits", "public");
+                    b.ToTable("FixedTermDeposit");
                 });
 
             modelBuilder.Entity("ExpFastEnpoints.ExpFastEndpoints.Core.Models.InvestmentHouse", b =>
@@ -86,7 +83,7 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
                     b.Property<string>("CountryOfIncorporation")
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<DateTime?>("DateCreated")
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateOnly?>("DateOfIncorporation")
@@ -119,12 +116,12 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
                     b.Property<bool?>("TradingLicense")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("investment_houses", "public");
+                    b.ToTable("investment_houses", (string)null);
                 });
 
             modelBuilder.Entity("ExpFastEnpoints.ExpFastEndpoints.Core.Models.FixedTermDeposit", b =>
@@ -163,7 +160,7 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
 
                             b1.HasKey("InvestmentHouseId", "Id");
 
-                            b1.ToTable("ContactPerson", "public");
+                            b1.ToTable("ContactPerson");
 
                             b1.WithOwner()
                                 .HasForeignKey("InvestmentHouseId");
@@ -192,7 +189,7 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
 
                             b1.HasKey("InvestmentHouseId", "Id");
 
-                            b1.ToTable("Director", "public");
+                            b1.ToTable("Director");
 
                             b1.WithOwner()
                                 .HasForeignKey("InvestmentHouseId");

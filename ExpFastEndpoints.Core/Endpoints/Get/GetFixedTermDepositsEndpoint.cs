@@ -17,7 +17,7 @@ public class FixedTermDepositsEndpoint(IDatabaseService databaseService, Postgre
     {
         Get("exp/fixed-term-deposits");
         Summary(s => s.Summary = "Get fixed-term-deposits");
-        // AllowAnonymous();
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(FixedTermDepositsRequest req, CancellationToken ct)

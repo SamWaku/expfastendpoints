@@ -7,41 +7,37 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
 {
     /// <inheritdoc />
-    public partial class investmenthousenewfields : Migration
+    public partial class investmenthouse : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema(
-                name: "public");
-
             migrationBuilder.AlterDatabase()
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "investment_houses",
-                schema: "public",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    CompanyName = table.Column<string>(type: "longtext", nullable: true),
+                    Name = table.Column<string>(type: "longtext", nullable: true),
                     InstitutionType = table.Column<string>(type: "longtext", nullable: true),
                     CompanyRegistrationNumber = table.Column<string>(type: "longtext", nullable: true),
                     Tpin = table.Column<string>(type: "longtext", nullable: true),
                     CountryOfIncorporation = table.Column<string>(type: "longtext", nullable: true),
-                    DateOfIncorporation = table.Column<DateOnly>(type: "date", nullable: false),
-                    PhysicalAddress = table.Column<string>(type: "longtext", nullable: true),
+                    DateOfIncorporation = table.Column<DateOnly>(type: "date", nullable: true),
+                    Address = table.Column<string>(type: "longtext", nullable: true),
                     PostalAddress = table.Column<string>(type: "longtext", nullable: true),
                     TelephoneNumber = table.Column<string>(type: "longtext", nullable: true),
-                    MobileNumber = table.Column<string>(type: "longtext", nullable: true),
+                    ContactNumber = table.Column<string>(type: "longtext", nullable: true),
                     EmailAddress = table.Column<string>(type: "longtext", nullable: true),
                     CertificateOfIncorporation = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     TaxClearanceCertificate = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     TradingLicense = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     Financials = table.Column<bool>(type: "tinyint(1)", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -51,7 +47,6 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
 
             migrationBuilder.CreateTable(
                 name: "ContactPerson",
-                schema: "public",
                 columns: table => new
                 {
                     InvestmentHouseId = table.Column<int>(type: "int", nullable: false),
@@ -68,7 +63,6 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
                     table.ForeignKey(
                         name: "FK_ContactPerson_investment_houses_InvestmentHouseId",
                         column: x => x.InvestmentHouseId,
-                        principalSchema: "public",
                         principalTable: "investment_houses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -77,7 +71,6 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
 
             migrationBuilder.CreateTable(
                 name: "Director",
-                schema: "public",
                 columns: table => new
                 {
                     InvestmentHouseId = table.Column<int>(type: "int", nullable: false),
@@ -94,28 +87,61 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
                     table.ForeignKey(
                         name: "FK_Director_investment_houses_InvestmentHouseId",
                         column: x => x.InvestmentHouseId,
-                        principalSchema: "public",
                         principalTable: "investment_houses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "FixedTermDeposit",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    InvestmentHouseId = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<double>(type: "double", nullable: false),
+                    InterestRate = table.Column<double>(type: "double", nullable: false),
+                    Tenure = table.Column<int>(type: "int", nullable: false),
+                    StartDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    MaturityDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    InterestAmount = table.Column<double>(type: "double", nullable: false),
+                    MaturityAmount = table.Column<double>(type: "double", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FixedTermDeposit", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FixedTermDeposit_investment_houses_InvestmentHouseId",
+                        column: x => x.InvestmentHouseId,
+                        principalTable: "investment_houses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FixedTermDeposit_InvestmentHouseId",
+                table: "FixedTermDeposit",
+                column: "InvestmentHouseId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ContactPerson",
-                schema: "public");
+                name: "ContactPerson");
 
             migrationBuilder.DropTable(
-                name: "Director",
-                schema: "public");
+                name: "Director");
 
             migrationBuilder.DropTable(
-                name: "investment_houses",
-                schema: "public");
+                name: "FixedTermDeposit");
+
+            migrationBuilder.DropTable(
+                name: "investment_houses");
         }
     }
 }

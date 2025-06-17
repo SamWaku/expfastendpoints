@@ -5,8 +5,9 @@ namespace ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 
 public class FixedTermDeposit : BaseEntity
 {
-    public double Amount { get; set; }
     public int InvestmentHouseId { get; set; }
+
+    public double Amount { get; set; }
 
     public double InterestRate { get; set; }
 
@@ -19,6 +20,8 @@ public class FixedTermDeposit : BaseEntity
     public double InterestAmount { get; set; }
 
     public double MaturityAmount { get; set; }
+
+    public DateTime DateCreated { get; set; }
 
     public DateTime UpdatedAt { get; set; }
 
