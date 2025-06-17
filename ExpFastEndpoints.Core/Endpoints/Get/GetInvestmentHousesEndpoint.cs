@@ -26,7 +26,7 @@ public class GetInvestmentHousesEndpoint(PostgresDatabase postgresDb) : Endpoint
         var database = postgresDb.InvestmentHouse;
         var investmentHouses = await database
             .OrderByDescending(x => x.Id)
-            .ConditionalWhere(req.CompanyName != null, x => x.CompanyName == req.CompanyName)
+            .ConditionalWhere(req.CompanyName != null, x => x.Name == req.CompanyName)
             .Skip((req.PageNumber - 1) * req.PageSize)
             .Take(req.PageSize)
             .ToListAsync(cancellationToken: ct);
@@ -36,16 +36,16 @@ public class GetInvestmentHousesEndpoint(PostgresDatabase postgresDb) : Endpoint
         {
             Id = x.Id,
             DateCreated = x.DateCreated,
-            CompanyName = x.CompanyName,
+            CompanyName = x.Name,
             InstitutionType = x.InstitutionType,
             CompanyRegistrationNumber = x.CompanyRegistrationNumber,
             Tpin = x.Tpin,
             CountryOfIncorporation = x.CountryOfIncorporation,
             DateOfIncorporation = x.DateOfIncorporation,
-            PhysicalAddress = x.PhysicalAddress,
+            PhysicalAddress = x.Address,
             PostalAddress = x.PostalAddress,
             TelephoneNumber = x.TelephoneNumber,
-            MobileNumber = x.MobileNumber,
+            MobileNumber = x.ContactNumber,
             EmailAddress = x.EmailAddress,
             ContactPersons = x.ContactPersons,
             Directors = x.Directors,

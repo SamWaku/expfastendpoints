@@ -6,16 +6,16 @@ namespace ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 
 public class InvestmentHouse : BaseEntity
 {
-    public string? CompanyName {get;set;} //existing field
+    public string? Name {get;set;} //existing field
     public string? InstitutionType {get;set;}
     public string? CompanyRegistrationNumber {get;set;}
     public string? Tpin {get;set;}
     public string? CountryOfIncorporation {get;set;}
-    public DateOnly DateOfIncorporation {get;set;}
-    public string? PhysicalAddress {get;set;} //existing field
+    public DateOnly? DateOfIncorporation {get;set;}
+    public string? Address {get;set;} //existing field
     public string? PostalAddress {get;set;}
     public string? TelephoneNumber {get;set;} //existing field
-    public string? MobileNumber {get;set;}
+    public string? ContactNumber {get;set;}
     [EmailAddress]
     public string? EmailAddress {get;set;}
     public List<ContactPerson> ContactPersons { get; set; } = new();
@@ -24,6 +24,7 @@ public class InvestmentHouse : BaseEntity
     public Boolean? TaxClearanceCertificate {get;set;}
     public Boolean? TradingLicense {get;set;}
     public Boolean? Financials {get;set;}
+    public virtual ICollection<FixedTermDeposit> FixedTermDeposits { get; set; } = new List<FixedTermDeposit>();
     
     [Owned]
     public class ContactPerson

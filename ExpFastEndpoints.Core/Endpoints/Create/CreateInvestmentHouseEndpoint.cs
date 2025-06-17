@@ -23,16 +23,16 @@ public class CreateInvestmentHouseEndpoint(PostgresDatabase postgresDb) : Endpoi
         var database = postgresDb;
         var newInvestmentHouse = new InvestmentHouse
         {
-            CompanyName = req.CompanyName,
+            Name = req.CompanyName,
             InstitutionType = req.InstitutionType,
             CompanyRegistrationNumber = req.CompanyRegistrationNumber,
             Tpin = req.Tpin,
             CountryOfIncorporation = req.CountryOfIncorporation,
             DateOfIncorporation = req.DateOfIncorporation,
-            PhysicalAddress = req.PhysicalAddress,
+            Address = req.PhysicalAddress,
             PostalAddress = req.PostalAddress,
             TelephoneNumber = req.TelephoneNumber,
-            MobileNumber = req.MobileNumber,
+            ContactNumber =  req.MobileNumber,
             EmailAddress = req.EmailAddress,
             ContactPersons = req.ContactPersons,
             Directors = req.Directors,

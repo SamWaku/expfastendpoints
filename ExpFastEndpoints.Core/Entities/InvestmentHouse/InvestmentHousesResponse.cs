@@ -12,7 +12,7 @@ public class InvestmentHousesResponse : BaseEntity
     public string? CompanyRegistrationNumber {get;set;}
     public string? Tpin {get;set;}
     public string? CountryOfIncorporation {get;set;}
-    public DateOnly DateOfIncorporation {get;set;}
+    public DateOnly? DateOfIncorporation {get;set;}
     public string? PhysicalAddress {get;set;}
     public string? PostalAddress {get;set;}
     public string? TelephoneNumber {get;set;}
