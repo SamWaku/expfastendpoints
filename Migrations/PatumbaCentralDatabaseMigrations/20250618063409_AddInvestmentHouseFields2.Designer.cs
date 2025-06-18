@@ -3,6 +3,7 @@ using System;
 using ExpFastEnpoints.ExpFastEndpoints.Core.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -11,16 +12,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
 {
     [DbContext(typeof(PatumbaCentralDatabase))]
-    [Migration("20250617134250_investmenthouse")]
-    partial class investmenthouse
+    [Migration("20250618063409_AddInvestmentHouseFields2")]
+    partial class AddInvestmentHouseFields2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.6")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
             modelBuilder.Entity("ExpFastEnpoints.ExpFastEndpoints.Core.Models.FixedTermDeposit", b =>
                 {
@@ -28,10 +31,12 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<double>("Amount")
                         .HasColumnType("double");
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<DateTime?>("DateCreated")
                         .HasColumnType("datetime(6)");
 
                     b.Property<double>("InterestAmount")
@@ -55,7 +60,7 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
                     b.Property<int>("Tenure")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -70,6 +75,8 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
                         .HasColumnType("longtext");
@@ -149,6 +156,8 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
 
+                            MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b1.Property<int>("Id"));
+
                             b1.Property<string>("Email")
                                 .HasColumnType("longtext");
 
@@ -177,6 +186,8 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
+
+                            MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b1.Property<int>("Id"));
 
                             b1.Property<string>("Email")
                                 .HasColumnType("longtext");

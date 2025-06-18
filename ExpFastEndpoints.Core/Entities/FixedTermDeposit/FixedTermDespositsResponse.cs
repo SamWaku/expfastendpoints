@@ -19,8 +19,8 @@ public class FixedTermDepositsResponse : BaseEntity
 
     public double? MaturityAmount { get; set; }
 
-    public DateTime? DateCreated { get; set; }
-
-    public DateTime? UpdatedAt { get; set; }
+    // public DateTime? DateCreated { get; set; }
+    //
+    // public DateTime? UpdatedAt { get; set; }
 
 }

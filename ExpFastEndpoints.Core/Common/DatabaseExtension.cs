@@ -26,8 +26,8 @@ public static class DatabaseExtension
         
         services.AddDbContext<PatumbaCentralDatabase>(options =>
         {
-            options.UseMySQL(patumbaCentralConnectionStrings)
-            .LogTo(Console.WriteLine, LogLevel.Information);
+            options.UseMySql(patumbaCentralConnectionStrings, ServerVersion.AutoDetect(patumbaCentralConnectionStrings)
+            ).LogTo(Console.WriteLine, LogLevel.Information);
         });
     }
 }
