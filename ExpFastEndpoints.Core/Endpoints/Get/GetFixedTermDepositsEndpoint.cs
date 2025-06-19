@@ -45,7 +45,8 @@ public class FixedTermDepositsEndpoint(IDatabaseService databaseService, Postgre
             MaturityAmount = x.MaturityAmount,
             DateCreated = x.DateCreated,
             UpdatedAt = x.UpdatedAt,
-            InvestmentHouse = x.InvestmentHouse.Name
+            InvestmentHouse = x.InvestmentHouse.Name,
+            Status = x.Status
 
         }).ToPagedResponse(totals, req);
         

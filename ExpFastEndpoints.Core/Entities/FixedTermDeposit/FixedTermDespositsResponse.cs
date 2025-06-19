@@ -1,4 +1,5 @@
 ﻿using ExpFastEnpoints.ExpFastEndpoints.Core.Common;
+using ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 
 public class FixedTermDepositsResponse : BaseEntity
 {
@@ -18,6 +19,8 @@ public class FixedTermDepositsResponse : BaseEntity
     public double? InterestAmount { get; set; }
 
     public double? MaturityAmount { get; set; }
+    
+    public FixedTermStatus? Status { get; set; }
 
     // public DateTime? DateCreated { get; set; }
     //

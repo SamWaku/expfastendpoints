@@ -4,6 +4,7 @@ using ExpFastEnpoints.ExpFastEndpoints.Core.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
 {
     [DbContext(typeof(PatumbaCentralDatabase))]
-    partial class PatumbaCentralDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20250619084300_FixedTermInvestmentHouseEquity")]
+    partial class FixedTermInvestmentHouseEquity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

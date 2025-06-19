@@ -4,6 +4,7 @@ using ExpFastEnpoints.ExpFastEndpoints.Core.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
 {
     [DbContext(typeof(PatumbaCentralDatabase))]
-    partial class PatumbaCentralDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20250619082524_FixedTermInvestmentHouse")]
+    partial class FixedTermInvestmentHouse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,37 +24,6 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
-
-            modelBuilder.Entity("ExpFastEnpoints.ExpFastEndpoints.Core.Models.Equity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Company")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime?>("DateCreated")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("OrderType")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Quantity")
-                        .HasColumnType("double");
-
-                    b.Property<double>("SharePrice")
-                        .HasColumnType("double");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Equities");
-                });
 
             modelBuilder.Entity("ExpFastEnpoints.ExpFastEndpoints.Core.Models.FixedTermDeposit", b =>
                 {

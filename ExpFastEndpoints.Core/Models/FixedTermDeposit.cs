@@ -26,6 +26,7 @@ public class FixedTermDeposit : BaseEntity
     public FixedTermStatus Status { get; set; }
 }
 
+[PostgresEnum]
 public enum FixedTermStatus
 {
     Approved,

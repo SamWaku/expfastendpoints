@@ -8,6 +8,7 @@ public class PatumbaCentralDatabase(DbContextOptions<PatumbaCentralDatabase> opt
 {
     public DbSet<InvestmentHouse> InvestmentHouses { get; set; }
     public DbSet<FixedTermDeposit> FixedTermDeposits { get; set; }
+    public DbSet<Equity> Equities { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
