@@ -22,4 +22,13 @@ public class FixedTermDeposit : BaseEntity
     public double MaturityAmount { get; set; }
     
     public virtual InvestmentHouse InvestmentHouse { get; set; } = null!;
+    
+    public FixedTermStatus Status { get; set; }
+}
+
+public enum FixedTermStatus
+{
+    Approved,
+    Pending,
+    Rejected,
 }

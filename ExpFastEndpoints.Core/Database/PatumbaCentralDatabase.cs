@@ -7,11 +7,11 @@ namespace ExpFastEnpoints.ExpFastEndpoints.Core.Database;
 public class PatumbaCentralDatabase(DbContextOptions<PatumbaCentralDatabase> options) : DbContext(options)
 {
     public DbSet<InvestmentHouse> InvestmentHouses { get; set; }
-    // public DbSet<FixedTermDeposit> FixedTermDeposits { get; set; }
+    public DbSet<FixedTermDeposit> FixedTermDeposits { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<InvestmentHouse>().ToTable("investment_houses");
-        // builder.Entity<FixedTermDeposit>().ToTable("fixed_term_deposits");
+        builder.Entity<FixedTermDeposit>().ToTable("fixed_term_deposits");
     }
 }
