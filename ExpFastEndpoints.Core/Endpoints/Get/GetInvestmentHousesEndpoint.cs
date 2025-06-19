@@ -1,7 +1,9 @@
-﻿using ExpFastEnpoints.ExpFastEndpoints.Core.Common.Extensions;
+﻿using ExpFastEnpoints.ExpFastEndpoints.Core.Common;
+using ExpFastEnpoints.ExpFastEndpoints.Core.Common.Extensions;
 using ExpFastEnpoints.ExpFastEndpoints.Core.Common.Pagination;
 using ExpFastEnpoints.ExpFastEndpoints.Core.Database;
 using ExpFastEnpoints.ExpFastEndpoints.Core.Entities;
+using ExpFastEnpoints.ExpFastEndpoints.Core.Models;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,19 +14,21 @@ public class InvestmentHousesRequest : PaginationFilter
     public string? CompanyName { get; set; }
 }
 
-public class GetInvestmentHousesEndpoint(PostgresDatabase postgresDb) : Endpoint<InvestmentHousesRequest, PaginatedResponse<InvestmentHousesResponse>>
+public class GetInvestmentHousesEndpoint(PostgresDatabase postgresDb, IDatabaseService database) : Endpoint<InvestmentHousesRequest, PaginatedResponse<InvestmentHousesResponse>>
 {
     public override void Configure()
     {
         Get("exp/investment-houses");
         Summary(s => s.Summary = "Get investment houses");
-        // AllowAnonymous();
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(InvestmentHousesRequest req, CancellationToken ct)
     {
-        var database = postgresDb.InvestmentHouse;
-        var investmentHouses = await database
+        var db = database.SelectDatabase("PatumbaCentral");
+        var patumbaDb = db.Set<InvestmentHouse>();
+        
+        var investmentHouses = await patumbaDb
             .OrderByDescending(x => x.Id)
             .ConditionalWhere(req.CompanyName != null, x => x.Name == req.CompanyName)
             .Skip((req.PageNumber - 1) * req.PageSize)

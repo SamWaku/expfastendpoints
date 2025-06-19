@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
@@ -13,6 +13,12 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             //investment house section
+            migrationBuilder.AddColumn<string>(
+                name: "InstitutionType",
+                table: "investment_houses",
+                nullable: true
+            );
+            
              migrationBuilder.AddColumn<string>(
                 name: "CompanyRegistrationNumber",
                 table: "investment_houses",
@@ -98,7 +104,7 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
                 table: "fixed_term_deposits",
                 type: "int",
                 nullable: false,
-                defaultValue: 1 
+                defaultValue: 0 
             );
             
             //new contact person table linked to investment house
@@ -188,3 +194,4 @@ namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
         }
     }
 }
+ 

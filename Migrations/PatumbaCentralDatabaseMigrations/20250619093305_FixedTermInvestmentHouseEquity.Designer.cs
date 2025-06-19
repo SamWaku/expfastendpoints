@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpFastEnpoints.Migrations.PatumbaCentralDatabaseMigrations
 {
     [DbContext(typeof(PatumbaCentralDatabase))]
-    [Migration("20250619084300_FixedTermInvestmentHouseEquity")]
+    [Migration("20250619093305_FixedTermInvestmentHouseEquity")]
     partial class FixedTermInvestmentHouseEquity
     {
         /// <inheritdoc />

@@ -18,8 +18,8 @@ public class InvestmentHouse : BaseEntity
     public string? ContactNumber {get;set;}
     [EmailAddress]
     public string? EmailAddress {get;set;}
-    public List<ContactPerson> ContactPersons { get; set; } = new();
-    public List<Director> Directors { get; set; } = new();
+    public ICollection<ContactPerson> ContactPersons { get; set; } = new List<ContactPerson>();
+    public ICollection<Director> Directors { get; set; } = new List<Director>();
     public Boolean? CertificateOfIncorporation {get;set;}
     public Boolean? TaxClearanceCertificate {get;set;}
     public Boolean? TradingLicense {get;set;}
